@@ -1,4 +1,4 @@
-body {
+body, .nextButton {
     text-align: center;
 }
 .container { 
@@ -23,3 +23,19 @@ label{
 input {
     border: 2px solid black;
 }
+.symptomsPage{
+    display: none;
+    width: 70%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    padding: 10px;
+}
+.column {
+    float: left;
+    width: 33.33%;
+  }

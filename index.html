@@ -7,6 +7,8 @@
     <title>BetterMedic</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="./hmac-md5.js"></script>                        
+    <script src="./enc-base64-min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -14,19 +16,19 @@
         <h3 class="welcomeText">My goal is to give you a list of possible diagnoses from the symptoms, issues, and body locations you'll provide, in addition to your age and gender.</h3>
         <h3 class="welcomeText">From there a list of doctors and/or specialists related to said diagnosis will be provided within your local area.</h3>
         <input type="submit" id="start" class="welcomeText" name="startButton" value="Let's Get Started!">
-        <form>
-            <h3>Please provide your age, gender, and zip code. You may also choose the range in which you'd like to search</h3>
-            <label>Age</label>
+        <form class="genInfo">
+            <h3>Please provide your age, gender, and zip code. You may also choose the range in which you'd like to search.</h3>
+            <label>Age:</label>
             <input type="number" value="18" name='age' class='age' min="1" max="99" required>
             <div class="gender">
                 <label>Gender:</label>
-                <label>Male</label>
-                <input type="radio" value="Male" name="gender"required>
-                <label>Female</label>
-                <input type="radio" value="Female" name="gender">
+                <label for="male">Male</label>
+                <input type="radio" id="male" value="Male" name="gender"required>
+                <label for="female">Female</label>
+                <input type="radio" id="female" value="Female" name="gender">
             </div>
-            <label>Zip Code:</label>
-            <input type="text" class="zip" name="zip" patter="[0-9]"><br>
+            <label for="zip">Zip Code:</label>
+            <input type="text" class="zip" name="zip" pattern="[0-9]*"><br>
             <label>For better results, use your current location</label>
             <input type="button" value="Get my current location" class="currentLocation" name="currentLocation"><br>
             <label>Latitude:</label>
@@ -35,18 +37,29 @@
             <input type="text" class="longitude" disabled><br>
             <label>Range to search for doctors/specialists:</label>
             <div class="range">
-                <label>25 miles</label>
-                <input type="radio" value="25" name="range" required>
-                <label>50 miles</label>
-                <input type="radio" value="50" name="range">
-                <label>100 miles</label>
-                <input type="radio" value="100" name="range" checked>
+                <input type="radio" id="25" value="25" name="range" required>
+                <label for="25">25 miles</label>
+                <input type="radio" id="50" value="50" name="range">
+                <label for ="50">50 miles</label>
+                <input type="radio" id="100" value="100" name="range" checked>
+                <label for="100">100 miles</label>
             </div>
-            <input type="button" class="next" value="Next">
+            <div class='nextButton'>
+            <input type="submit" value="Next">
+            </div>
+        </form>
+    </div>
+    <form class="symptomsPage">
+        <h2>Please check 1 or more of the symptoms you're feeling:</h2><br>
+            <div class="column" name="symptomsColumn1" id="symptomsColumn1"></div>
+            <div class="column" id="symptomsColumn2"></div>
+            <div class="column" id="symptomsColumn3"></div>
+            <div class='nextButton'>
+                    <input type="submit" value="Next">
+            </div>
         </form>
         <section class="results hidden">
         </section>
-    </div>
     <script src="index.js"></script>
 </body>
 </html>
