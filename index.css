@@ -35,7 +35,12 @@ input {
     border: 2px solid black;
     padding: 10px;
 }
-.column {
+
+.symptomsColumn {
     float: left;
     width: 33.33%;
   }
+.issuesColumn {
+    float: left;
+    width: 50%;
+}
