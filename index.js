@@ -5,9 +5,12 @@ const medicURL = 'https://sandbox-healthservice.priaid.ch/'; //URL base to fetch
 let zipCode = ''; //user's zip code
 let userLat = ''; //user's latitude
 let userLong = ''; //user's longitude
+let age = '';
+let gender = '';
 let issues = ''; //responseJson Object of issues from ApiMedic
 let symptoms = ''; //responseJson Object of symptoms from ApiMedic
-let symptomsArr = []; //array of user's symptoms that were checked
+let symptomsAndIssuesArr = []; //array of user's symptoms that were checked
+let range = ''
 const api_key = 'enguyen89141@gmail.com' 
 var uri = 'https://sandbox-authservice.priaid.ch/login'; //login url to fetch token 
 var secret_key = "n6X3ByDw97Eod8W2Q"; //ApiMedic pass to get token 
@@ -54,7 +57,7 @@ function fetchSymptoms() { //2.2 Uses token showForm to fetch symptoms
     .then(response => response.json())
     .then(responseJson =>
          populateSymptoms(responseJson))
-    .catch(error => alert('Something went wrong. Please try again later.'))
+    .catch(error => alert('There was an issue retrieving the list of symptoms. Please try again later.'))
 }
 
 
@@ -75,7 +78,10 @@ function populateSymptoms(responseJson) { //2.3 populates symptoms into 3 column
 function showSymptoms() { //2.4 ensures user inputs zip code or coordinates, hides general infomation page and populates/shows symptoms page
     $('.genInfo').submit(function(event) {
         event.preventDefault();
-        let zipCode = $('.zip').val();        
+        zipCode = $('.zip').val();
+        age = $('.age').val();
+        gender = $("input[name='gender']:checked").val();
+        range = $("input[name='range']:checked").val();
         if($('.zip').val() === '' && $('.latitude').val() === '' ) {
                 alert("Please enter a zip code or select my current location.")
             } else {
@@ -86,7 +92,7 @@ function showSymptoms() { //2.4 ensures user inputs zip code or coordinates, hid
                 $('.symptomsPage').css('justify-content', 'center')
                 }
     })
-
+    showIssues();
 }
 
 
@@ -95,7 +101,7 @@ function fetchIssues() { //3.1 fetches and populates issues page
     .then(response => response.json())
     .then(responseJson =>
          populateIssues(responseJson))
-    .catch(error => alert('Something went wrong. Please try again later.'))
+    .catch(error => alert('There was an issue retrieving the list of issues. Please try again later.'))
 }
 
 function populateIssues(responseJson) {//same as above
@@ -112,7 +118,7 @@ function showIssues() { //3.2 Stores ID numbers from symptoms page into an array
     $('.symptomsPage').submit(function(event) {
         event.preventDefault();
         $('.symptomsPage input[type="checkbox"]:checked').each(function() {
-                symptomsArr.push($(this).val());
+            symptomsAndIssuesArr.push($(this).val());
         });
         $('.symptomsPage').css('display', 'none')
         fetchIssues();
@@ -122,7 +128,41 @@ function showIssues() { //3.2 Stores ID numbers from symptoms page into an array
         })
     }
 
+function showResults() {
+    $('.issuesPage').submit(function(event) {
+        event.preventDefault();
+        $('.issuesPage input[type="checkbox"]:checked').each(function() {
+            symptomsAndIssuesArr.push($(this).val());
+        });
+        fetchResults();
+    })
+}
+
+function fetchResults() {
+    fetch(medicURL + 'diagnosis?symptoms=[' + symptomsAndIssuesArr + ']&gender=' + gender + '&year_of_birth=' + age + '&token=' + medicKey + '&format=json&language=en-gb')
+    .then(response => response.json())
+    .then(responseJson =>
+        displayResults(responseJson))
+    .catch(error => alert('Sorry we are unable to return your results. Please try again later.')) 
+}
+
+function displayResults(responseJson){
+    let results = responseJson;
+    $('.issuesPage').css('display', 'none')
+    $('.results').css('display', 'block')
+    for (let i = 0; i < results.length; i ++){
+        $('.results').append(`<h3>Name: ${results[i].Issue.Name}</h3><p>Recommended Specialists: `)
+        for (let j = 0; j < results[i].Specialisation.length; j++) {
+            $('.results').append(`${results[i].Specialisation[j].Name} `)
+        }
+    }
+    $('.results').append('</p>')
+    fetch('https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=ce1e7e356075c4503093af9bfb06ec0c')
+    .then(response => response.json())
+    .then(responseJson => 
+        console.log(responseJson))
+}
+showResults();
 showForm();
-showIssues();
 showSymptoms();
 getLocation();

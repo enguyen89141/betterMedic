@@ -23,7 +23,7 @@ label{
 input {
     border: 2px solid black;
 }
-.symptomsPage{
+.symptomsPage, .issuesPage{
     display: none;
     width: 70%;
     height: auto;
@@ -43,4 +43,13 @@ input {
 .issuesColumn {
     float: left;
     width: 50%;
+}
+.results {
+    display: none;
+    border: 2px solid black;
+    text-align: left;
+}
+
+h2 {
+    width: 100%;
 }
