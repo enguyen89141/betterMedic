@@ -1,7 +1,9 @@
 'use strict'
 
 let medicKey = ''; //stores ApiMedic API key
-const medicURL = 'https://sandbox-healthservice.priaid.ch/'; //URL base to fetch data
+const medicURL = 'https://sandbox-healthservice.priaid.ch/'; //URL base to fetch data from ApiMedic API
+const doctorURL = 'https://api.betterdoctor.com/2016-03-01/doctors?location=' //URL base to fetch data from BetterDoctor API
+const doctorKey = 'ce1e7e356075c4503093af9bfb06ec0c'
 let zipCode = ''; //user's zip code
 let userLat = ''; //user's latitude
 let userLong = ''; //user's longitude
@@ -135,6 +137,7 @@ function showResults() {
             symptomsAndIssuesArr.push($(this).val());
         });
         fetchResults();
+        
     })
 }
 
@@ -146,9 +149,27 @@ function fetchResults() {
     .catch(error => alert('Sorry we are unable to return your results. Please try again later.')) 
 }
 
+function displayDoctors() {
+    if (zipCode === '' ) {
+        fetch(doctorURL + userLat + '%2C' + userLong + '%2C' + range + '&user_location=' + userLat + '%2C' + userLong + '&skip=0&limit=10&user_key=' + doctorKey)
+        .then(response => response.json())
+        .then(response =>
+            displayDoctorResults(response))
+    } else {
+        fetch(doctorURL + zipCode + '&skip=0&limit=10&user_key=' + doctorKey)
+        .then(response => response.json())
+        .then(response =>
+            displayDoctorResults(response))
+    }
+}
+
 function displayResults(responseJson){
     let results = responseJson;
     $('.issuesPage').css('display', 'none')
+    if (results === undefined || results.length === 0) {
+        alert('Sorry no results were found. Please try again with fewer selections.')
+        location.reload();
+    } else {
     $('.results').css('display', 'block')
     for (let i = 0; i < results.length; i ++){
         $('.results').append(`<h3>Name: ${results[i].Issue.Name}</h3><p>Recommended Specialists: `)
@@ -157,10 +178,22 @@ function displayResults(responseJson){
         }
     }
     $('.results').append('</p>')
-    fetch('https://api.betterdoctor.com/2016-03-01/doctors?location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=10&user_key=ce1e7e356075c4503093af9bfb06ec0c')
-    .then(response => response.json())
-    .then(responseJson => 
-        console.log(responseJson))
+    displayDoctors();
+}}
+
+function displayDoctorResults(responseJson) {
+    let doctorResults = responseJson.data;
+    if (doctorResults === undefined || doctorResults.length === 0)
+        $('.results').append('<h3>Sorry no doctors were found in your area.</h3>')
+    else {
+        for (let i = 0; i < doctorResults.length; i ++){
+            $('.results').append('<h2>Doctors in your area</h2>')
+            $('.results').append(`<h3>Name: ${doctorResults[i].practices[0].name}</h3>`)
+            $('.results').append(`<p>Specialty: ${doctorResults[i].specialties[0].name}`)
+            $('.results').append(`<p>Phone Number: ${doctorResults[i].practices[0].phones[0].number}`)
+        }
+    }
+
 }
 showResults();
 showForm();
