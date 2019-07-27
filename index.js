@@ -19,10 +19,6 @@ var secret_key = "n6X3ByDw97Eod8W2Q"; //ApiMedic pass to get token
 var computedHash = CryptoJS.HmacMD5(uri,secret_key); 
 var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
 
-$(document).ready(function () {
-    $('body').fadeIn('slow');
-})
-
 function showForm() { //1 retrieves token from ApiMedic, hides welcome text, and shows general information collection screen
     $('#start').on('click', function(event) {
         event.preventDefault();
@@ -121,7 +117,7 @@ function populateIssues(responseJson) {//same as above
     issues = responseJson;
     if ($('#myVideo').css('display') === 'none'){
         for (let i = 0; i < issues.length; i ++) {
-            $('#issuesColumn1').append(`<input type="checkbox" class="checkbox" id="${symptoms[i].ID}" value="${symptoms[i].ID}" name="${symptoms[i].Name}"><label for="${symptoms[i].ID}">${symptoms[i].Name}</label><br>`)
+            $('#issuesColumn1').append(`<input type="checkbox" class="checkbox" id="${issues[i].ID}" value="${issues[i].ID}" name="${issues[i].Name}"><label for="${issues[i].ID}">${issues[i].Name}</label><br>`)
         } 
     } else {
             for (let i = 0; i < 25; i++){
@@ -197,7 +193,6 @@ function displayResults(responseJson){
     $('.results').append('</p>')
     displayDoctors();
 }}
-
 function displayDoctorResults(responseJson) {
     let doctorResults = responseJson.data;
     if (doctorResults === undefined || doctorResults.length === 0)
@@ -210,9 +205,16 @@ function displayDoctorResults(responseJson) {
             $('.results').append(`<p>Phone Number: ${doctorResults[i].practices[0].phones[0].number}`)
         }
     }
+    $('.results').append('<p>Powered by:</p><p><img src="./images/apiMedic.png" alt="ApiMedic Logo" class="apiLogo"></p><p><img src="./images/betterDoctorLogo.png" alt="Better Doctor logo" class="apiLogo"></p>')
+}
 
+function startOver() {
+    $('.startOver').on('click', function(event) {
+        location.reload();
+    })
 }
 showResults();
 showForm();
 showSymptoms();
 getLocation();
+startOver();

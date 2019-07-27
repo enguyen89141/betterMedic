@@ -1,12 +1,10 @@
-
 body {
     background-image: url('./images/mobileBackground.jpg');
     background-repeat: no-repeat;
     background-size: 300px 300px;
     background-position: 50% -20%;
-    display: none;
 }
-.nextButton, body {
+.nextButton, body, .results {
     text-align: center;
 }
 #myVideo, .results, form{
@@ -35,7 +33,7 @@ body {
 .genInfo {
     border-color: #2E88C4;
 }
-.symptomsPage, .issuesPage{
+.symptomsPage, .issuesPage, .results{
     background-image: url('./images/caduceus.png');
     background-repeat: no-repeat;
     background-position: 50%;
@@ -53,7 +51,7 @@ body {
     position: fixed;
     bottom:0%;
 }   
-.next{
+.next, .startOver{
     margin-top: 10px;
 }
 .currentLocation, .latitude, .longitude, .next, .welcomeButton, .zip, .age, .container {
@@ -69,9 +67,16 @@ form {
     border: 2px solid black;
     padding: 20px;
 }
-.results, form {
+form {
     text-align: left;
 }
 .welcomeButton {
     margin-bottom: 5px;
+}
+.symptomsColumn, .issuesColumn {
+    width: 100%;
+}
+.apiLogo {
+    width: 20%;
+    height: auto;
 }
