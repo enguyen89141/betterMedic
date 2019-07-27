@@ -80,3 +80,38 @@ form {
     width: 20%;
     height: auto;
 }
+
+@media only screen and (min-width:768px){
+    body {
+        background-size: 500px 500px;
+    }
+    .logoText, .genText, .title, .genInfo, .currentLocation, .latitude, .longitude, .next, .welcomeButton, .zip, .age, .container, .issuesPage h2, .symptomsPage h2, .results h2, .results h4{
+        font-size: 22.5px;
+    }
+    .welcomeButton, .symptomsPage, .issuesPage, .results, .startOver{
+        font-size: 20px;
+    }
+    input[type="radio"] {
+        transform: scale(2);
+    }   
+    .symptomsColumn {
+        float: left;
+        width: 33.33%;
+    }
+    .issuesColumn {
+        float: left;
+        width: 50%;
+    }
+    .nextButton {
+        text-align: center;
+    }
+    h2 {
+        width: 100%;
+    }
+    .results p {
+        font-weight: bold;
+    }
+    .symptomsPage label, .issuesPage label {
+        font-size: 30px;
+    }
+}

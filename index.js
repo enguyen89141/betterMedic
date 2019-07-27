@@ -34,8 +34,10 @@ function showForm() { //1 retrieves token from ApiMedic, hides welcome text, and
         $('.home').css('display', 'none')
         $('.container').css('border', 'none')
         $('.genInfo').css('display', 'block')
-        $('body').css('background-size', '200px 200px')
-            })
+        if ($('body').css('background-size') === '300px 300px') {
+            $('body').css('background-size', '200px 200px')
+            }
+        })
     }
  
 function getLocation() { //2.1 gets user's longitude and latitude coordinates when they click on get my current location 
@@ -65,7 +67,7 @@ function fetchSymptoms() { //2.2 Uses token showForm to fetch symptoms
 
 function populateSymptoms(responseJson) { //2.3 populates symptoms into 3 columns
     symptoms = responseJson;
-    if ($('#myVideo').css('display') === 'none'){
+    if ($(window).width() < 500){
         for (let i = 0; i < symptoms.length; i ++) {
             $('#symptomsColumn1').append(`<input type="checkbox" class="checkbox" id="${symptoms[i].ID}" value="${symptoms[i].ID}" name="${symptoms[i].Name}"><label for="${symptoms[i].ID}">${symptoms[i].Name}</label><br>`)
         }
@@ -115,7 +117,7 @@ function fetchIssues() { //3.1 fetches and populates issues page
 
 function populateIssues(responseJson) {//same as above
     issues = responseJson;
-    if ($('#myVideo').css('display') === 'none'){
+    if ($(window).width() < 500){
         for (let i = 0; i < issues.length; i ++) {
             $('#issuesColumn1').append(`<input type="checkbox" class="checkbox" id="${issues[i].ID}" value="${issues[i].ID}" name="${issues[i].Name}"><label for="${issues[i].ID}">${issues[i].Name}</label><br>`)
         } 
