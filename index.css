@@ -80,7 +80,6 @@ form {
     width: 20%;
     height: auto;
 }
-
 @media only screen and (min-width:768px){
     body {
         background-size: 500px 500px;
@@ -113,5 +112,32 @@ form {
     }
     .symptomsPage label, .issuesPage label {
         font-size: 30px;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    #myVideo {
+        display: inline;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%; 
+        min-height: 100%;
+      }
+    body {
+        background-image: none;
+    }
+    .container {
+        left: 0%;
+        bottom: 15%;
+        width: 20%;
+        height: 700px;
+        margin-left: 20px;
+        padding: 10px
+    }
+    form, .container {
+        border: none;
+    }
+    .home, .container {
+        background-color: white;
     }
 }

@@ -31,13 +31,19 @@ function showForm() { //1 retrieves token from ApiMedic, hides welcome text, and
             .then(function(responseJson) {
                 medicKey = responseJson.Token;
             })
-        $('.home').css('display', 'none')
-        $('.container').css('border', 'none')
-        $('.genInfo').css('display', 'block')
-        if ($('body').css('background-size') === '300px 300px') {
-            $('body').css('background-size', '200px 200px')
+            if ($(window).width() > 1024) {
+                $('.home').fadeOut('fast')
+                $('.genInfo').fadeIn('slow')
+                $('.container').css('border', 'none')
+            } else {
+                $('.home').css('display', 'none')
+                $('.genInfo').css('display', 'block')
+                if ($('body').css('background-size') === '300px 300px') {
+                    $('body').css('background-size', '200px 200px')
+                    }
+                }
             }
-        })
+        )
     }
  
 function getLocation() { //2.1 gets user's longitude and latitude coordinates when they click on get my current location 
@@ -102,6 +108,10 @@ function showSymptoms() { //2.4 ensures user inputs zip code or coordinates, hid
                 $('.symptomsPage').css('flex-wrap', 'wrap')
                 $('.symptomsPage').css('justify-content', 'center')
                 }
+    if ($(window).width() > 1024){
+        $('#myVideo').css('display', 'none');
+        $('.container').css('display', 'none');
+    }
     })
     showIssues();
 }
@@ -215,8 +225,11 @@ function startOver() {
         location.reload();
     })
 }
-showResults();
-showForm();
-showSymptoms();
-getLocation();
-startOver();
+function betterMedic() {
+    showResults();
+    showForm();
+    showSymptoms();
+    getLocation();
+    startOver();
+}
+betterMedic();
