@@ -77,16 +77,15 @@ label{
     border-color: #2E88C4;
 }
 .symptomsPage, .issuesPage{
+    margin-top: 0;
     display: none;
-    width: 70%;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 85%;
     border: 2px solid #2E88C4;
-    padding: 10px;
+}
+.issuesPage{
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .symptomsColumn {

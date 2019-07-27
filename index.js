@@ -128,6 +128,8 @@ function showIssues() { //3.2 Stores ID numbers from symptoms page into an array
         });
         $('.symptomsPage').css('display', 'none')
         fetchIssues();
+        $('.issuesPage').append('<img src="./images/caduceus2.png" class="caduceusBottomLeft" alt="colorized caduceus">')
+        $('.issuesPage').append('<img src="./images/caduceus2.png" class="caduceusTopRight" alt="colorized caduceus">')
         $('.issuesPage').css('display', 'flex')
         $('.issuesPage').css('flex-wrap', 'wrap')
         $('.issuesPage').css('justify-content', 'center')
