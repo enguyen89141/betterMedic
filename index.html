@@ -19,13 +19,15 @@
         <source src="./videos/betterMedicBackground.mp4" type="video/mp4">
     </video>
     <div class="container">
+        <section class="home">
         <h1 class="logoText">BetterMedic</h1>
         <h2 class="title">Helping you get back to your life</h2>
         <h3 class="genText"><span class="logoText">BetterMedic</span> gives you a list of possible diagnoses from the symptoms and issues you'll select, in addition to your age and gender.</h3>
         <h3 class="genText">In addition to that, a list of different specialists will be provided within your local area.</h3>
         <input type="submit" id="start" class="welcomeButton" name="startButton" value="Let's Get Started!">
+        </section>
         <form class="genInfo">
-            <h3>Please provide your age, gender, and zip code. You may also choose the range in which you'd like to search.</h3>
+            <h3 class="genText">Please provide your age, gender, and zip code. You may also choose the range in which you'd like to search for doctors.</h3>
             <label>Age:</label>
             <input type="number" value="18" name='age' class='age' min="1" max="99" required>
             <div class="gender">
@@ -38,9 +40,9 @@
             <label for="zip">Zip Code:</label>
             <input type="text" class="zip" name="zip" pattern="[0-9]*"><br>
             <label>For better results, use your current location</label>
-            <input type="button" value="Get my current location" class="currentLocation" name="currentLocation"><br>
+            <input type="button" value="Use my current location" class="currentLocation" name="currentLocation"><br>
             <label>Latitude:</label>
-            <input type="text" class="latitude" disabled>
+            <input type="text" class="latitude" disabled><br>
             <label>Longitude:</label>
             <input type="text" class="longitude" disabled><br>
             <label>Range to search for doctors/specialists:</label>
@@ -53,7 +55,7 @@
                 <label for="100">100 miles</label>
             </div>
             <div class='nextButton'>
-            <input type="submit" value="Next">
+            <input type="submit" value="Next" class="next">
             </div>
         </form>
     </div>
@@ -63,7 +65,7 @@
             <div class="symptomsColumn" id="symptomsColumn2"></div>
             <div class="symptomsColumn" id="symptomsColumn3"></div>
             <div class='nextButton'>
-                    <input type="submit" value="Next">
+                    <input type="submit" value="Next" class="next">
             </div>
     </form>
     <form class="issuesPage">
@@ -72,7 +74,7 @@
         <div class="issuesColumn" id="issuesColumn2"></div>
         <div class="issuesColumn" id="issuesColumn3"></div>
         <div class='nextButton'>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" class="next">
         </div>
     </form>
         <section class="results">

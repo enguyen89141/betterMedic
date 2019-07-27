@@ -32,9 +32,10 @@ function showForm() { //1 retrieves token from ApiMedic, hides welcome text, and
             .then(function(responseJson) {
                 medicKey = responseJson.Token;
             })
-        $('.welcomeText').css('display', 'none')
+        $('.home').css('display', 'none')
         $('.container').css('border', 'none')
         $('.genInfo').css('display', 'block')
+        $('body').css('background-size', '200px 200px')
             })
     }
  
@@ -89,9 +90,12 @@ function showSymptoms() { //2.4 ensures user inputs zip code or coordinates, hid
             } else {
                 $('form').css('display', 'none')
                 fetchSymptoms();
+                $('body').css('background-image', 'none')
                 $('.symptomsPage').css('display', 'flex')
                 $('.symptomsPage').css('flex-wrap', 'wrap')
                 $('.symptomsPage').css('justify-content', 'center')
+                $('.symptomsPage').append('<img src="./images/caduceus2.png" class="caduceusBottomLeft" alt="colorized caduceus">')
+                $('.symptomsPage').append('<img src="./images/caduceus2.png" class="caduceusTopRight" alt="colorized caduceus">')
                 }
     })
     showIssues();

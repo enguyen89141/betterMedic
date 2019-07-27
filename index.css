@@ -22,13 +22,43 @@ body {
 .welcomeButton {
     margin-bottom: 5px;
 }
+.caduceusBottomLeft, .caduceusTopRight {
+    width:30px;
+    height: 30px;
+    position: absolute;
+}
+.caduceusBottomLeft {
+    left: 0%;
+    bottom: 0%;
+}
+.caduceusTopRight {
+    top: 0%;
+    right: 0%;
+}
+.welcomeButton {
+    background-color: #99c2ff;
+    border: 2px solid #2E88C4;
+}
+.currentLocation, .latitude, .longitude, .next, .welcomeButton, .zip, .age{
+    font-size: 10px;
+}
+.next{
+    margin-top: 10px;
+}
+.symptomsPage, .issuesPage {
+    font-family: 'Gentium Book Basic', serif;
+    font-size: 6.5px;
+}
+.currentLocation{
+    margin-left: 25%;
+}
 .container {
     height: auto;
     width: 95%;
     background-color: white;
     position: absolute;
     bottom:0%;
-    border: 2px solid black;
+    border: 2px solid #2E88C4;
     font-size: 10px;
     }
 form {
@@ -40,8 +70,11 @@ form {
 label{
     padding: 10px;
 }
-input {
+.zip, .age, .latitude, .longitude {
     border: 2px solid black;
+}
+.genInfo {
+    border-color: #2E88C4;
 }
 .symptomsPage, .issuesPage{
     display: none;
@@ -52,7 +85,7 @@ input {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    border: 2px solid black;
+    border: 2px solid #2E88C4;
     padding: 10px;
 }
 
@@ -66,7 +99,7 @@ input {
 }
 .results {
     display: none;
-    border: 2px solid black;
+    border: 2px solid #2E88C4;
     text-align: left;
 }
 
