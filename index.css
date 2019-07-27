@@ -1,116 +1,77 @@
 
 body {
-    text-align: center;
     background-image: url('./images/mobileBackground.jpg');
     background-repeat: no-repeat;
     background-size: 300px 300px;
     background-position: 50% -20%;
+    display: none;
 }
-.logoText{
+.nextButton, body {
+    text-align: center;
+}
+#myVideo, .results, form{
+    display: none;
+}
+.logoText{ /*styling for BetterMedic text*/
     font-family: 'Cinzel', serif;
     color: #003399;
 }
-.title {
+.title, .results h2, .results h4 { 
     font-family: 'Alike', serif;
-}
-.genText {
-    font-family: 'Raleway', sans-serif;
-}
-.nextButton {
-    text-align: center;
-}
-.welcomeButton {
-    margin-bottom: 5px;
-}
-.caduceusBottomLeft, .caduceusTopRight {
-    width:30px;
-    height: 30px;
-    position: absolute;
-}
-.caduceusBottomLeft {
-    left: 0%;
-    bottom: 0%;
-}
-.caduceusTopRight {
-    top: 0%;
-    right: 0%;
-}
-.welcomeButton {
-    background-color: #99c2ff;
-    border: 2px solid #2E88C4;
-}
-.currentLocation, .latitude, .longitude, .next, .welcomeButton, .zip, .age{
-    font-size: 10px;
-}
-.next{
-    margin-top: 10px;
-}
-.symptomsPage, .issuesPage {
+} 
+.symptomsPage, .issuesPage { /* styling for checkbox text*/
     font-family: 'Gentium Book Basic', serif;
-    font-size: 6.5px;
 }
-.currentLocation{
-    margin-left: 25%;
+.issuesPage h2, .symptomsPage h2, .results h2 {
+    font-size: 14px;
 }
-.container {
-    height: auto;
-    width: 95%;
-    background-color: white;
-    position: absolute;
-    bottom:0%;
-    border: 2px solid #2E88C4;
+.results h4{
     font-size: 10px;
-    }
-form {
-    text-align: left;
-    display: none;
-    border: 2px solid black;
-    padding: 20px;
 }
-label{
-    padding: 10px;
-}
-.zip, .age, .latitude, .longitude {
-    border: 2px solid black;
+.results {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px
 }
 .genInfo {
     border-color: #2E88C4;
 }
 .symptomsPage, .issuesPage{
-    margin-top: 0;
+    background-image: url('./images/caduceus.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+    margin: auto;
     display: none;
     width: 85%;
     height: 85%;
     border: 2px solid #2E88C4;
 }
-.issuesPage{
-    padding-top: 0;
-    padding-bottom: 0;
+.container {
+    height: auto;
+    width: 95%;
+    background-color: white;
+    position: fixed;
+    bottom:0%;
+}   
+.next{
+    margin-top: 10px;
 }
-
-.symptomsColumn {
-    float: left;
-    width: 33.33%;
-  }
-.issuesColumn {
-    float: left;
-    width: 50%;
+.currentLocation, .latitude, .longitude, .next, .welcomeButton, .zip, .age, .container {
+    font-size: 10px;
 }
-.results {
-    display: none;
+.results, .container, .welcomeButton {
     border: 2px solid #2E88C4;
+} 
+.welcomeButton{
+    background-color: #99c2ff;
+}
+form {
+    border: 2px solid black;
+    padding: 20px;
+}
+.results, form {
     text-align: left;
 }
-
-h2 {
-    width: 100%;
+.welcomeButton {
+    margin-bottom: 5px;
 }
-
-#myVideo {
-    display: none;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
-  }

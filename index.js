@@ -19,6 +19,9 @@ var secret_key = "n6X3ByDw97Eod8W2Q"; //ApiMedic pass to get token
 var computedHash = CryptoJS.HmacMD5(uri,secret_key); 
 var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
 
+$(document).ready(function () {
+    $('body').fadeIn('slow');
+})
 
 function showForm() { //1 retrieves token from ApiMedic, hides welcome text, and shows general information collection screen
     $('#start').on('click', function(event) {
@@ -66,14 +69,20 @@ function fetchSymptoms() { //2.2 Uses token showForm to fetch symptoms
 
 function populateSymptoms(responseJson) { //2.3 populates symptoms into 3 columns
     symptoms = responseJson;
-    for (let i = 0; i < 21; i++){
-        $('#symptomsColumn1').append(`<input type="checkbox" class="checkbox" id="${symptoms[i].ID}" value="${symptoms[i].ID}" name="${symptoms[i].Name}"><label for="${symptoms[i].ID}">${symptoms[i].Name}</label><br>`)
-    }
-    for (let j = 20; j < 41; j++){
-        $('#symptomsColumn2').append(`<input type="checkbox" class="checkbox" id="${symptoms[j].ID}" value="${symptoms[j].ID}" name="${symptoms[j].Name}"><label for="${symptoms[j].ID}">${symptoms[j].Name}</label><br>`)
-    }
-    for (let k = 41; k < 62; k++){
-        $('#symptomsColumn3').append(`<input type="checkbox" class="checkbox" id="${symptoms[k].ID}" value="${symptoms[k].ID}" name="${symptoms[k].Name}"><label for="${symptoms[k].ID}">${symptoms[k].Name}</label><br>`)
+    if ($('#myVideo').css('display') === 'none'){
+        for (let i = 0; i < symptoms.length; i ++) {
+            $('#symptomsColumn1').append(`<input type="checkbox" class="checkbox" id="${symptoms[i].ID}" value="${symptoms[i].ID}" name="${symptoms[i].Name}"><label for="${symptoms[i].ID}">${symptoms[i].Name}</label><br>`)
+        }
+    } else {
+        for (let i = 0; i < 21; i++){
+            $('#symptomsColumn1').append(`<input type="checkbox" class="checkbox" id="${symptoms[i].ID}" value="${symptoms[i].ID}" name="${symptoms[i].Name}"><label for="${symptoms[i].ID}">${symptoms[i].Name}</label><br>`)
+        }
+        for (let j = 20; j < 41; j++){
+            $('#symptomsColumn2').append(`<input type="checkbox" class="checkbox" id="${symptoms[j].ID}" value="${symptoms[j].ID}" name="${symptoms[j].Name}"><label for="${symptoms[j].ID}">${symptoms[j].Name}</label><br>`)
+        }
+        for (let k = 41; k < 62; k++){
+            $('#symptomsColumn3').append(`<input type="checkbox" class="checkbox" id="${symptoms[k].ID}" value="${symptoms[k].ID}" name="${symptoms[k].Name}"><label for="${symptoms[k].ID}">${symptoms[k].Name}</label><br>`)
+        }
     }
 }
 
@@ -94,8 +103,6 @@ function showSymptoms() { //2.4 ensures user inputs zip code or coordinates, hid
                 $('.symptomsPage').css('display', 'flex')
                 $('.symptomsPage').css('flex-wrap', 'wrap')
                 $('.symptomsPage').css('justify-content', 'center')
-                $('.symptomsPage').append('<img src="./images/caduceus2.png" class="caduceusBottomLeft" alt="colorized caduceus">')
-                $('.symptomsPage').append('<img src="./images/caduceus2.png" class="caduceusTopRight" alt="colorized caduceus">')
                 }
     })
     showIssues();
@@ -112,11 +119,17 @@ function fetchIssues() { //3.1 fetches and populates issues page
 
 function populateIssues(responseJson) {//same as above
     issues = responseJson;
-    for (let i = 0; i < 25; i++){
-        $('#issuesColumn1').append(`<input type="checkbox" class="checkbox" id="${issues[i].ID}" value="${issues[i].ID}" name="${issues[i].Name}"><label for="${issues[i].ID}">${issues[i].Name}</label><br>`)
-    }
-    for (let j = 25; j < 50; j++){
-        $('#issuesColumn2').append(`<input type="checkbox" class="checkbox" id="${issues[j].ID}" value="${issues[j].ID}" name="${issues[j].Name}"><label for="${issues[j].ID}">${issues[j].Name}</label><br>`)
+    if ($('#myVideo').css('display') === 'none'){
+        for (let i = 0; i < issues.length; i ++) {
+            $('#issuesColumn1').append(`<input type="checkbox" class="checkbox" id="${symptoms[i].ID}" value="${symptoms[i].ID}" name="${symptoms[i].Name}"><label for="${symptoms[i].ID}">${symptoms[i].Name}</label><br>`)
+        } 
+    } else {
+            for (let i = 0; i < 25; i++){
+                $('#issuesColumn1').append(`<input type="checkbox" class="checkbox" id="${issues[i].ID}" value="${issues[i].ID}" name="${issues[i].Name}"><label for="${issues[i].ID}">${issues[i].Name}</label><br>`)
+            }
+            for (let j = 25; j < 50; j++){
+                $('#issuesColumn2').append(`<input type="checkbox" class="checkbox" id="${issues[j].ID}" value="${issues[j].ID}" name="${issues[j].Name}"><label for="${issues[j].ID}">${issues[j].Name}</label><br>`)
+            }
     }
 }
 
@@ -128,8 +141,6 @@ function showIssues() { //3.2 Stores ID numbers from symptoms page into an array
         });
         $('.symptomsPage').css('display', 'none')
         fetchIssues();
-        $('.issuesPage').append('<img src="./images/caduceus2.png" class="caduceusBottomLeft" alt="colorized caduceus">')
-        $('.issuesPage').append('<img src="./images/caduceus2.png" class="caduceusTopRight" alt="colorized caduceus">')
         $('.issuesPage').css('display', 'flex')
         $('.issuesPage').css('flex-wrap', 'wrap')
         $('.issuesPage').css('justify-content', 'center')
@@ -192,8 +203,8 @@ function displayDoctorResults(responseJson) {
     if (doctorResults === undefined || doctorResults.length === 0)
         $('.results').append('<h3>Sorry no doctors were found in your area.</h3>')
     else {
+        $('.results').append('<h2>Doctors in your area</h2>')
         for (let i = 0; i < doctorResults.length; i ++){
-            $('.results').append('<h2>Doctors in your area</h2>')
             $('.results').append(`<h3>Name: ${doctorResults[i].practices[0].name}</h3>`)
             $('.results').append(`<p>Specialty: ${doctorResults[i].specialties[0].name}`)
             $('.results').append(`<p>Phone Number: ${doctorResults[i].practices[0].phones[0].number}`)
