@@ -8,8 +8,7 @@ A user is able to use this app to input general information about themselves tha
 In case you're having difficulty finding the right selections to get results, zip code 89141 and a single selection of 'back page' on the symptoms page will return doctor results in addition to diagnoses.<br>
 <h2>Technology used:</h2> 
 HTML/CSS/Javascript/jQuery  <br>
-<h2>1. Welcome page on desktop</h2>  
-![](./images/desktop1.png?raw=true)
+<h2>1. Welcome page on desktop
 ![](./images/desktop1.png?raw=true)
 <h2>2. General information page that gathers data from the user to pull from the APIs</h2> <br>
 ![](./images/desktop2.png?raw=true )  <br>
