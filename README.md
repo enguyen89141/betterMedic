@@ -10,7 +10,8 @@ In case you're having difficulty finding the right selections to get results, zi
 HTML/CSS/Javascript/jQuery  <br>
 <h2>Screenshots</h2> <br>
 1. Welcome page on desktop <br>
-![](./images/desktop1.png?raw=true)
+<img src="./images/desktop1.png" alt="welcome page">
+![](./images/desktop1.png?raw=true )
 2. General information page that gathers data from the user to pull from the APIs <br>
 ![](./images/desktop2.png?raw=true )  <br>
 3. List of symptoms page that is pulled from ApiMedic <br>
