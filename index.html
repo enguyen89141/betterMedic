@@ -28,8 +28,8 @@
         </section>
         <form class="genInfo">
             <h3 class="genText">Please provide your age, gender, and zip code. You may also choose the range in which you'd like to search for doctors.</h3>
-            <label>Age:</label>
-            <input type="number" value="18" name='age' class='age' min="1" max="99" required>
+            <label for="age">Age:</label>
+            <input type="number" value="18" id="age" class="age" min="1" max="99" required>
             <div class="gender">
                 <label>Gender:</label>
                 <label for="male">Male</label>
@@ -38,7 +38,7 @@
                 <input type="radio" id="female" value="Female" name="gender">
             </div>
             <label for="zip">Zip Code:</label>
-            <input type="text" class="zip" name="zip" pattern="[0-9]*"><br>
+            <input type="text" class="zip" id="zip" pattern="[0-9]*"><br>
             <label>For better results, use your current location</label>
             <input type="button" value="Use my current location" class="currentLocation" name="currentLocation"><br>
             <label>Latitude:</label>
@@ -54,7 +54,7 @@
                 <input type="radio" id="100" value="100" name="range" checked>
                 <label for="100">100 miles</label>
             </div>
-            <div class='nextButton'>
+            <div class="nextButton">
             <input type="submit" value="Next" class="next">
             </div>
         </form>
@@ -64,7 +64,7 @@
             <div class="symptomsColumn" id="symptomsColumn1"></div>
             <div class="symptomsColumn" id="symptomsColumn2"></div>
             <div class="symptomsColumn" id="symptomsColumn3"></div>
-            <div class='nextButton'>
+            <div class="nextButton">
                     <input type="submit" value="Next" class="next">
             </div>
     </form>
@@ -72,7 +72,7 @@
         <h2>Please check any of the issues you are dealing with:</h2><br>
         <div class="issuesColumn" id="issuesColumn1"></div>
         <div class="issuesColumn" id="issuesColumn2"></div>
-        <div class='nextButton'>
+        <div class="nextButton">
                 <input type="submit" value="Submit" class="next">
         </div>
     </form>

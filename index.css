@@ -44,6 +44,10 @@ body {
     height: 85%;
     border: 2px solid #2E88C4;
 }
+.welcomeButton:hover, .next:hover, .startOver:hover {
+    background-color: white;
+    cursor: pointer;
+}
 .container {
     height: auto;
     width: 95%;
@@ -128,14 +132,14 @@ form {
     }
     .container {
         left: 0%;
-        bottom: 15%;
+        bottom: 5%;
         width: 20%;
-        height: 700px;
         margin-left: 20px;
         padding: 10px
     }
     form, .container {
         border: none;
+        height: auto;
     }
     .home, .container {
         background-color: white;

@@ -81,7 +81,7 @@ function populateSymptoms(responseJson) { //2.3 populates symptoms into 3 column
         for (let i = 0; i < 21; i++){
             $('#symptomsColumn1').append(`<input type="checkbox" class="checkbox" id="${symptoms[i].ID}" value="${symptoms[i].ID}" name="${symptoms[i].Name}"><label for="${symptoms[i].ID}">${symptoms[i].Name}</label><br>`)
         }
-        for (let j = 20; j < 41; j++){
+        for (let j = 21; j < 41; j++){
             $('#symptomsColumn2').append(`<input type="checkbox" class="checkbox" id="${symptoms[j].ID}" value="${symptoms[j].ID}" name="${symptoms[j].Name}"><label for="${symptoms[j].ID}">${symptoms[j].Name}</label><br>`)
         }
         for (let k = 41; k < 62; k++){
@@ -107,11 +107,12 @@ function showSymptoms() { //2.4 ensures user inputs zip code or coordinates, hid
                 $('.symptomsPage').css('display', 'flex')
                 $('.symptomsPage').css('flex-wrap', 'wrap')
                 $('.symptomsPage').css('justify-content', 'center')
+                if ($(window).width() > 1024){
+                    $('#myVideo').css('display', 'none');
+                    $('.container').css('display', 'none');
                 }
-    if ($(window).width() > 1024){
-        $('#myVideo').css('display', 'none');
-        $('.container').css('display', 'none');
-    }
+                }
+
     })
     showIssues();
 }
@@ -166,7 +167,7 @@ function showResults() {
     })
 }
 
-function fetchResults() {
+function fetchResults() { //3.3 fetches results from apiMedic after passing selected symptoms and issues
     fetch(medicURL + 'diagnosis?symptoms=[' + symptomsAndIssuesArr + ']&gender=' + gender + '&year_of_birth=' + age + '&token=' + medicKey + '&format=json&language=en-gb')
     .then(response => response.json())
     .then(responseJson =>
@@ -174,7 +175,7 @@ function fetchResults() {
     .catch(error => alert('Sorry we are unable to return your results. Please try again later.')) 
 }
 
-function displayDoctors() {
+function displayDoctors() { //4 displays doctors found in the area after pulling from the betterDoctor api
     if (zipCode === '' ) {
         fetch(doctorURL + userLat + '%2C' + userLong + '%2C' + range + '&user_location=' + userLat + '%2C' + userLong + '&skip=0&limit=10&user_key=' + doctorKey)
         .then(response => response.json())
@@ -188,7 +189,7 @@ function displayDoctors() {
     }
 }
 
-function displayResults(responseJson){
+function displayResults(responseJson){ 
     let results = responseJson;
     $('.issuesPage').css('display', 'none')
     if (results === undefined || results.length === 0) {
