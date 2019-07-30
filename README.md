@@ -4,12 +4,12 @@ BetterMedic <br>
 https://enguyen89141.github.io/betterMedic/ <br>
 <h2>Summary:</h2>  
 A user is able to use this app to input general information about themselves that includes gender, location, and age in addition to medical symptoms and issues they are dealing with and in return the app pulls from 2 APIs (BetterDoctor and ApiMedic) to give them suggestive diagnoses and doctors with different specializations in their area.  <br>
-<h2>Test Case:</h2> 
-In case you're having difficulty finding the right selections to get results, zip code 89141 and a single selection of 'back page' on the symptoms page will return doctor results in addition to diagnoses.  <br>
+<h2>Test Case:</h2>
+In case you're having difficulty finding the right selections to get results, zip code 89141 and a single selection of 'back page' on the symptoms page will return doctor results in addition to diagnoses.<br>
 <h2>Technology used:</h2> 
 HTML/CSS/Javascript/jQuery  <br>
-<h2>1. Welcome page on desktop</h2>
-![](./images/desktop1.png?raw=true )  <br>
+<h2>1. Welcome page on desktop</h2>  
+![](./images/desktop1.png?raw=true )<br>
 <h2>2. General information page that gathers data from the user to pull from the APIs</h2> <br>
 ![](./images/desktop2.png?raw=true )  <br>
 <h2>3. List of symptoms page that is pulled from ApiMedic</h2> <br>
