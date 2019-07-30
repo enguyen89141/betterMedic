@@ -8,7 +8,7 @@ body {
     text-align: center;
 }
 #myVideo, .results, form{
-    display: none;
+    display: none; 
 }
 .logoText{ /*styling for BetterMedic text*/
     font-family: 'Cinzel', serif;

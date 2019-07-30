@@ -201,7 +201,7 @@ function displayResults(responseJson){
         $('.results').append(`<h3>Name: ${results[i].Issue.Name}</h3><p>Recommended Specialists: `)
         for (let j = 0; j < results[i].Specialisation.length; j++) {
             $('.results').append(`${results[i].Specialisation[j].Name} `)
-        }
+        } 
     }
     $('.results').append('</p>')
     displayDoctors();
